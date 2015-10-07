@@ -14,50 +14,16 @@
 
 'use strict';
 
-var Set = require('Set');
-var DeviceEventManager = require('NativeModules').DeviceEventManager;
-var RCTDeviceEventEmitter = require('RCTDeviceEventEmitter');
+var warning = require('warning');
 
-var DEVICE_BACK_EVENT = 'hardwareBackPress';
-
-type BackPressEventName = $Enum<{
-  backPress: string;
-}>;
-
-var _backPressSubscriptions = new Set();
-
-RCTDeviceEventEmitter.addListener(DEVICE_BACK_EVENT, function() {
-  var invokeDefault = true;
-  _backPressSubscriptions.forEach((subscription) => {
-    if (subscription()) {
-      invokeDefault = false;
-    }
-  });
-  if (invokeDefault) {
-    BackAndroid.exitApp();
-  }
-});
+function platformWarn() {
+  warning(false, 'BackAndroid is not supported on this platform.');
+}
 
 var BackAndroid = {
-
-  exitApp: function() {
-    DeviceEventManager.invokeDefaultBackPressHandler();
-  },
-
-  addEventListener: function (
-    eventName: BackPressEventName,
-    handler: Function
-  ): void {
-    _backPressSubscriptions.add(handler);
-  },
-
-  removeEventListener: function(
-    eventName: BackPressEventName,
-    handler: Function
-  ): void {
-    _backPressSubscriptions.delete(handler);
-  },
-
+  exitApp: platformWarn,
+  addEventListener: platformWarn,
+  removeEventListener: platformWarn,
 };
 
 module.exports = BackAndroid;

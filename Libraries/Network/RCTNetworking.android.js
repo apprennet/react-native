@@ -25,14 +25,10 @@ var generateRequestId = function() {
  */
 class RCTNetworking {
 
-  static sendRequest(method, url, headers, data, callback) {
+  static sendRequest(query, callback) {
     var requestId = generateRequestId();
     RCTNetworkingNative.sendRequest(
-      method,
-      url,
-      requestId,
-      headers,
-      data,
+      query,
       callback);
     return requestId;
   }

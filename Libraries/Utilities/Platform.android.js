@@ -12,11 +12,8 @@
 
 'use strict';
 
-var AndroidConstants = require('NativeModules').AndroidConstants;
-
 var Platform = {
-  OS: 'android',
-  Version: AndroidConstants.Version,
+  OS: 'ios',
 };
 
 module.exports = Platform;
