@@ -143,6 +143,12 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 - (BOOL)webView:(__unused UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
  navigationType:(UIWebViewNavigationType)navigationType
 {
+  if ( _externalHTTPEnabled && navigationType == UIWebViewNavigationTypeLinkClicked &&
+      [request.URL.scheme hasPrefix:@"http"]) {
+    [[UIApplication sharedApplication] openURL:[request URL]];
+    return NO;
+  }
+
   // We have this check to filter out iframe requests and whatnot
   BOOL isTopFrame = [request.URL isEqual:request.mainDocumentURL];
   if (isTopFrame) {
