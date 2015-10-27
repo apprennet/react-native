@@ -73,8 +73,19 @@ var SliderIOS = React.createClass({
      * the slider is released).
      */
     onSlidingComplete: PropTypes.func,
+
+    /**
+     * If true the user won't be able to move the slider.
+     * Default value is false.
+     */
+    disabled: PropTypes.bool,
   },
 
+  getDefaultProps: function(): DefaultProps {
+    return {
+      disabled: false,
+    };
+  },
   _onValueChange: function(event: Event) {
     this.props.onChange && this.props.onChange(event);
     if (event.nativeEvent.continuous) {
@@ -96,6 +107,7 @@ var SliderIOS = React.createClass({
         minimumTrackTintColor={this.props.minimumTrackTintColor}
         maximumTrackTintColor={this.props.maximumTrackTintColor}
         onChange={this._onValueChange}
+        disabled={this.props.disabled}
       />
     );
   }
