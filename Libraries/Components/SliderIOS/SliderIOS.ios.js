@@ -79,6 +79,11 @@ var SliderIOS = React.createClass({
      * Default value is false.
      */
     disabled: PropTypes.bool,
+
+    /**
+     * Sets an image for the track. It only supports images that are included as assets
+     */
+    trackImage: PropTypes.string
   },
 
   getDefaultProps: function(): DefaultProps {
@@ -108,6 +113,7 @@ var SliderIOS = React.createClass({
         maximumTrackTintColor={this.props.maximumTrackTintColor}
         onChange={this._onValueChange}
         disabled={this.props.disabled}
+        trackImage={this.props.trackImage}
       />
     );
   }
