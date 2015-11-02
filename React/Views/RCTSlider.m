@@ -32,4 +32,18 @@
   super.value = _unclippedValue;
 }
 
+- (void)setThumbImage:(NSDictionary *) thumbImage
+{
+  UIImage *image = [UIImage imageNamed:thumbImage[@"source"]];
+
+  CGSize newSize = CGSizeMake([thumbImage[@"width"] floatValue], [thumbImage[@"height"] floatValue]);
+  UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+  [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+  UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+
+
+  [super setThumbImage:newImage forState:UIControlStateNormal];
+}
+
 @end

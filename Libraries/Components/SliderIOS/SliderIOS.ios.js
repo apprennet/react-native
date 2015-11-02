@@ -79,6 +79,12 @@ var SliderIOS = React.createClass({
      * Default value is false.
      */
     disabled: PropTypes.bool,
+
+    /**
+     * Sets an image for the thumb. It only supports images that are included as assets. It expects a dictionary that has the following form: {'source':'mySource','width':0,'height':0}
+     */
+    thumbImage: PropTypes.object
+
   },
 
   getDefaultProps: function(): DefaultProps {
@@ -108,6 +114,8 @@ var SliderIOS = React.createClass({
         maximumTrackTintColor={this.props.maximumTrackTintColor}
         onChange={this._onValueChange}
         disabled={this.props.disabled}
+        thumbImage={this.props.thumbImage}
+
       />
     );
   }
