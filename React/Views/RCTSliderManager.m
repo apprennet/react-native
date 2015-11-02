@@ -49,6 +49,7 @@ static void RCTSendSliderEvent(RCTSlider *sender, BOOL continuous)
 }
 
 RCT_EXPORT_VIEW_PROPERTY(value, float);
+RCT_EXPORT_VIEW_PROPERTY(thumbImage, NSDictionary);
 RCT_EXPORT_VIEW_PROPERTY(minimumValue, float);
 RCT_EXPORT_VIEW_PROPERTY(maximumValue, float);
 RCT_EXPORT_VIEW_PROPERTY(minimumTrackTintColor, UIColor);
