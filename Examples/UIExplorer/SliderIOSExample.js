@@ -89,5 +89,11 @@ exports.examples = [
     render(): ReactElement {
       return <SliderExample thumbImage={require('image!uie_thumb_big')} />;
     }
+  },
+  {
+    title: 'Custom thumb image and track',
+    render(): ReactElement {
+      return <SliderExample thumbImage={require('image!uie_thumb_big')} trackImage={require('image!red_rectangle')} />;
+    }
   }
 ];
